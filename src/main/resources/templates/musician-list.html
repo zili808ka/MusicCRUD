@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Музыканты</title>
+
+    <style>
+        table {
+        width: 600px;
+        border: 2px solid white;
+        margin: auto;
+        border-collapse: collapse;
+        }
+        TD, TH {
+        padding: 3px;
+        border: 3px solid black;
+        }
+    </style>
+
+</head>
+<body bgcolor="black">
+<div th:switch="${musicians}">
+    <h2 th:case="null">Музыканты не найдены!</h2>
+    <div th:case="*">
+        <h2 align="center"><font color="white" face="Arial" size="20px">МУЗЫКАНТЫ</font></h2>
+        <table bgcolor="white">
+            <thead>
+            <tr>
+                <th align="left"><font face="Arial">Имя</font></th>
+                <th align="left"><font face="Arial">Жанры</font></th>
+                <th align="left"><font face="Arial">Редкатировать</font></th>
+                <th align="left"><font face="Arial">Удалить</font></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="musician : ${musicians}">
+                <td th:text="${musician.name}"></td>
+                <td th:text="${musician.more_inf}"></td>
+                <td><a th:href="@{musician-update/{id}(id=${musician.id})}">Редактировать</a></td>
+                <td><a th:href="@{musician-delete/{id}(id=${musician.id})}">Удалить</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p align="center"><a href="/musician-create"><input type="submit" value="Добавить музыканта"></a></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление музыканта</title>
+</head>
+<body bgcolor="black">
+</br></br></br></br></br></br></br></br></br></br></br></br>
+<form action="#" th:action="@{/musician-create}" th:object="${musician}" method="post">
+    <p align="center">
+    <label for="name"><font color="white" face="Arial">Имя</font></label>
+    <input type="text" th:field="*{name}" id="name" placeholder="Имя">
+        </br>
+        </br>
+    <label for="more_inf"><font color="white" face="Arial">Жанры</font></label>
+    <input type="text" th:field="*{more_inf}" id="more_inf" placeholder="Больше">
+        </br>
+        </br>
+    <input type="submit" value="Добавить">
+    </p>
+</form>
+</body>
+</html>
